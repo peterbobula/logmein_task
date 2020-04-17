@@ -71,8 +71,11 @@ def pageTitleVerTest(target_browser):
 	# Set the targeted URL
 	driver = browserInit(target_browser)
 
-	title = driver.title
 	result = ""
+
+	# Get the page title
+	title = driver.title
+
 	if  'Selenium Easy' in title:
 		result = result + 'Verify page title test case is: PASSED! \n'
 		print('Verify page title test case is: PASSED!')
@@ -90,19 +93,20 @@ def getTotalTest(target_browser):
 	driver = browserInit(target_browser)
 
 	result = ""
+
+	# Navigate to the page
 	driver.find_elements_by_xpath("//*[contains(text(), 'Input Forms')]")[0].click()
-	button2 = driver.find_element_by_xpath("//*[contains(text(), 'Simple Form Demo')]").click()
+	driver.find_element_by_xpath("//*[contains(text(), 'Simple Form Demo')]").click()
 
 	sum1 = driver.find_element_by_id("sum1")
 	sum1.send_keys("5")
 
-
 	sum2 = driver.find_element_by_id("sum2")
 	sum2.send_keys("6")
 
-
 	driver.find_element_by_xpath("//button[contains(text(), 'Get Total')]").click()
 
+	# Get the value from the field
 	value = driver.find_element_by_id("displayvalue")
 
 	if value.text == '11':
@@ -123,9 +127,9 @@ def checkboxDemoTest(target_browser):
 
 	result = ""
 
-	button = driver.find_elements_by_xpath("//*[contains(text(), 'Input Forms')]")[0].click()
+	# Navigate to the page
+	driver.find_elements_by_xpath("//*[contains(text(), 'Input Forms')]")[0].click()
 	driver.find_element_by_xpath("//*[contains(text(), 'Checkbox Demo')]").click()
-
 
 	driver.find_element_by_id("isAgeSelected").click()
 
@@ -148,17 +152,17 @@ def formSubmitTest(target_browser):
 
 	result = ""
 
-	button = driver.find_elements_by_xpath("//*[contains(text(), 'Input Forms')]")[0].click()
-
-	button2 = driver.find_element_by_xpath("//*[contains(text(), 'Ajax Form Submit')]").click()
+	# Navigate to the page
+	driver.find_elements_by_xpath("//*[contains(text(), 'Input Forms')]")[0].click()
+	driver.find_element_by_xpath("//*[contains(text(), 'Ajax Form Submit')]").click()
 
 	field1 = driver.find_element_by_id("title")
-
 	field2 = driver.find_element_by_id("description")
 
 	button5 = driver.find_element_by_id("btn-submit")
 	button5.click()
 
+	# If the submit button is displayed with empty inputs, test is PASSED
 	if button5.is_displayed() and field1.get_attribute('value') == '' and field2.get_attribute('value') == '':
 		result = result + 'First part of the Form Submit test case is: PASSED! \n'
 		print('First part of the Form Submit test case is: PASSED!')
@@ -166,6 +170,7 @@ def formSubmitTest(target_browser):
 		result = result + 'First part of the Form Submit test case is: FAILED! \n'
 		print('First part of the Form Submit test case is: FAILED!')
 
+	# Add inputs into the fields
 	field1.send_keys("Test1")
 	field2.send_keys("Test2")
 	button5.click()
@@ -215,7 +220,6 @@ def createResultTxt(results):
 
 	except:
 		return('File is not created')
-
 
 
 
