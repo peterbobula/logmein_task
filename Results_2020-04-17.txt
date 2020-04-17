@@ -1,0 +1,6 @@
+Executed all of the test cases on: Firefox
+Verify page title test case is: PASSED! 
+Get Total test case is: PASSED! 
+Check Demo test case is : PASSED! 
+First part of the Form Submit test case is: PASSED! 
+Second part of the Form Submit test case is: PASSED! 
